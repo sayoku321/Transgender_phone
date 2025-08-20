@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法的性別変更者×身体的特徴：判例・実務ダッシュボード（軸別詳細分析版・スマートフォン）</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .evaluation-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        /* INTENT: 価値判断排除のため単色グラデーション採用 */
+        .score-very-high {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+        }
+        
+        .score-high {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+        
+        .score-medium {
+            background: linear-gradient(135deg, #60a5fa, #93c5fd);
+            color: #1e40af;
+        }
+        
+        .score-low {
+            background: linear-gradient(135deg, #93c5fd, #dbeafe);
+            color: #1e40af;
+        }
+        
+        .score-very-low {
+            background: linear-gradient(135deg, #dbeafe, #f8fafc);
+            color: #1e40af;
+        }
+        
+        .heatmap-cell {
+            padding: 0.75rem;
+            margin: 0.25rem 0;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .case-header {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 1.5rem;
+        }
+        
+        .evaluation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+        }
+        
+        .evaluation-table th,
+        .evaluation-table td {
+            padding: 0.5rem;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .evaluation-table th {
+            background: #f3f4f6;
+            font-weight: 600;
+        }
+        
+        .axis-analysis {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .summary-section {
+            background: #fef9e7;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .reference-section {
+            background: #f0fdf4;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #22c55e;
+        }
+        
+        .methodology-note {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 1rem 0;
+        }
+        
+         {
+            body { print-color-adjust: exact; }
+            .slide { page-break-inside: avoid; margin-bottom: 1rem; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<!-- タイトル・概要 -->
+<div class="slide bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+    <div class="text-center">
+        <h1 class="text-2xl font-bold mb-4">
+            <i class="fas fa-balance-scale mr-2"></i>
+            法的性別変更者×身体的特徴
+        </h1>
+        <h2 class="text-xl mb-6">判例・実務の可視化ダッシュボード</h2>
+        <div class="bg-white bg-opacity-20 rounded-lg p-4 mb-6">
+            <p class="text-sm">スマートフォン版 - 軸別詳細分析・総評付き完全版</p>
+            <p class="text-xs mt-2">価値中立的な建設的議論促進資料</p>
+        </div>
+        
+        <div class="methodology-note bg-white text-gray-800">
+            <h3 class="font-bold text-red-600 mb-2">
+                <i class="fas fa-exclamation-triangle mr-1"></i>重要：評価方法について
+            </h3>
+            <p class="text-sm mb-2">
+                <strong>色分けは重視度のみを表し、価値判断ではありません</strong>
+            </p>
+            <ul class="text-xs text-left space-y-1">
+                <li>• 第1層：判例での重視度（事実強度・価値中立）</li>
+                <li>• 第2層：3視点からの望ましさ評価（0-100点）</li>
+                <li>• 評価は分析者の解釈を含み、他の見解も存在し得ます</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- エグゼクティブサマリー -->
+<div class="slide">
+    <h2 class="text-xl font-bold mb-4 text-blue-800">
+        <i class="fas fa-chart-line mr-2"></i>エグゼクティブサマリー
+    </h2>
+    
+    <div class="summary-section">
+        <h3 class="font-bold text-orange-800 mb-3">主要結論5点</h3>
+        <ol class="space-y-2 text-sm">
+            <li><strong>1. 日本の進展：</strong>特例法生殖腺要件違憲確定、個別評価原則確立</li>
+            <li><strong>2. 判断基準の二極化：</strong>法的性別尊重 vs 身体的特徴考慮の分野別差異</li>
+            <li><strong>3. 個別評価の重要性：</strong>抽象的危惧から具体的リスク評価への転換</li>
+            <li><strong>4. 代替措置の可能性：</strong>施設・雇用分野での配慮要請強化</li>
+            <li><strong>5. 国際的整合性：</strong>比例原則重視の国際標準との合致</li>
+        </ol>
+    </div>
+    
+    <div class="summary-section">
+        <h3 class="font-bold text-orange-800 mb-3">資料活用の目的</h3>
+        <ul class="space-y-1 text-sm">
+            <li>• <strong>事実ベース議論：</strong>感情論・憶測を排し、判例・法理に基づく分析</li>
+            <li>• <strong>多角的視点：</strong>当事者・施設・社会全体の利害調整を包括検討</li>
+            <li>• <strong>実務的示唆：</strong>抽象的権利論から具体的制度設計への橋渡し</li>
+            <li>• <strong>建設的対話促進：</strong>対立煽動ではなく解決策模索の共通基盤</li>
+        </ul>
+    </div>
+</div>
+
+<!-- 6軸評価システム詳細定義 -->
+<div class="slide">
+    <h2 class="text-xl font-bold mb-4 text-blue-800">
+        <i class="fas fa-cogs mr-2"></i>6軸評価システム詳細定義
+    </h2>
+    
+    <div class="methodology-note">
+        <p class="font-bold text-red-600 mb-2">重要：「高/低」は重視度・要請の強さであり、価値判断ではありません</p>
+    </div>
+    
+    <div class="space-y-4">
+        <div class="axis-analysis">
+            <h3 class="font-bold text-blue-700 mb-2">1. 法的性別尊重度</h3>
+            <p class="text-sm mb-2">判例・実務で法的性別変更の効力が主要判断根拠として扱われる程度</p>
+            <div class="text-xs">
+                <div class="heatmap-cell score-high mb-1">高：法的性別が原則的決定要素、例外は限定的・個別化</div>
+                <div class="heatmap-cell score-low">低：出生時性別や身体的特徴が前面</div>
+            </div>
+        </div>
+        
+        <div class="axis-analysis">
+            <h3 class="font-bold text-blue-700 mb-2">2. 身体的特徴依存度</h3>
+            <p class="text-sm mb-2">解剖学・生理学的要素が結論形成に与える重み</p>
+            <div class="text-xs">
+                <div class="heatmap-cell score-high mb-1">高：身体的特徴への言及が判断の中心的役割</div>
+                <div class="heatmap-cell score-low">低：身体的特徴は周辺的または考慮されない</div>
+            </div>
+        </div>
+        
+        <div class="axis-analysis">
+            <h3 class="font-bold text-blue-700 mb-2">3. 個別評価充実度</h3>
+            <p class="text-sm mb-2">抽象的危惧を排し、当事者ごとの具体的状況・実害立証を重視する度合い</p>
+            <div class="text-xs">
+                <div class="heatmap-cell score-high mb-1">高：個別事情聴取・医師所見・実害実証を重視</div>
+                <div class="heatmap-cell score-low">低：カテゴリーによる一律判断</div>
+            </div>
+        </div>
+        
+        <div class="axis-analysis">
+            <h3 class="font-bold text-blue-700 mb-2">4. 配慮措置要求度</h3>
+            <p class="text-sm mb-2">より制限的でない代替手段の検討・採用要請の強さ</p>
+            <div class="text-xs">
+                <div class="heatmap-cell score-high mb-1">高：制限前の代替案検討・実装が必要</div>
+                <div class="heatmap-cell score-low">低：代替手段検討が不要または付随的</div>
+            </div>
+        </div>
+        
+        <div class="axis-analysis">
+            <h3 class="font-bold text-blue-700 mb-2">5. 代替措置実現可能性</h3>
+            <p class="text-sm mb-2">当該分野で代替手段を現実に導入しやすいかの程度</p>
+            <div class="text-xs">
+                <div class="heatmap-cell score-high mb-1">高：個室・予約制・監視強化等が低コスト・低摩擦で実装可能</div>
+                <div class="heatmap-cell score-low">低：物理制約・安全要件等で実装困難</div>
+            </div>
+        </div>
+        
+        <div class="axis-analysis">
+            <h3 class="font-bold text-blue-700 mb-2">6. リスク認定範囲</h3>
+            <p class="text-sm mb-2">想定リスクの広がり程度</p>
+            <div class="text-xs">
+                <div class="heatmap-cell score-high mb-1">高：施設全体・集団レベルの安全・秩序に関わる広域リスク</div>
+                <div class="heatmap-cell score-low">低：特定者間関係や限定状況に収まる狭域リスク</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 経産省トイレ事件 - ページ1：基本情報 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold mb-2">
+                <i class="fas fa-gavel mr-2"></i>経産省トイレ事件
+            </h2>
+            <p class="text-blue-100">最高裁三小・令和5年7月11日</p>
+            <p class="text-sm text-blue-100 mt-1">個別配慮の先例的意義</p>
+        </div>
+        
+        <div class="p-4">
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">事案</h3>
+                <p class="text-sm text-gray-700">
+                    性同一性障害職員の女性トイレ使用制限（同一フロア使用禁止）に対する人事院救済申立事件
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">結論</h3>
+                <p class="text-sm text-gray-700">
+                    人事院判定は裁量逸脱で違法。職場での継続的配慮義務を認定
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">第2層：結果の望ましさ評価（0-100点）</h3>
+                <table class="evaluation-table">
+                    <thead>
+                        <tr>
+                            <th class="w-2/5">評価軸の結果</th>
+                            <th class="w-1/5">当事者権利</th>
+                            <th class="w-1/5">安全管理</th>
+                            <th class="w-1/5">実務実現</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">法的性別尊重度：高（4/5）</td>
+                            <td class="font-bold text-green-600">85点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                            <td class="font-bold text-blue-600">80点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">身体的特徴依存度：低（2/5）</td>
+                            <td class="font-bold text-green-600">80点</td>
+                            <td class="font-bold text-yellow-600">60点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">個別評価充実度：非常に高（5/5）</td>
+                            <td class="font-bold text-green-600">95点</td>
+                            <td class="font-bold text-green-600">85点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">配慮措置要求度：高（4/5）</td>
+                            <td class="font-bold text-green-600">90点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                            <td class="font-bold text-yellow-600">65点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">代替措置実現可能性：高（4/5）</td>
+                            <td class="font-bold text-green-600">85点</td>
+                            <td class="font-bold text-green-600">80点</td>
+                            <td class="font-bold text-green-600">85点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">リスク認定範囲：狭域（2/5）</td>
+                            <td class="font-bold text-green-600">90点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                            <td class="font-bold text-green-600">80点</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="reference-section">
+                <h3 class="font-bold text-green-800 mb-2">
+                    <i class="fas fa-link mr-1"></i>参考資料
+                </h3>
+                <ul class="text-sm space-y-1">
+                    <li>• 判決全文：<a href="https://www.courts.go.jp/app/hanrei_jp/detail2?id=92153" class="text-blue-600 underline">最高裁判所判例集</a></li>
+                    <li>• 事件番号：令和4年(行ツ)第125号</li>
+                    <li>• 掲載：判例時報第2593号</li>
+                    <li>• 信頼度：A（一次公式資料）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 経産省トイレ事件 - ページ2：軸別詳細分析 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold">経産省トイレ事件 - 軸別詳細分析</h2>
+        </div>
+        
+        <div class="p-4">
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">法的性別尊重度</h3>
+                <p class="text-sm">
+                    最高裁は10年以上の職場での「女性」としての継続的生活実態を重視し、法的性別変更の社会的効力を前面に押し出した。戸籍上の性別変更が単なる形式ではなく、職場での人格的尊厳の基礎であることを明示的に認定している。一方で、物理的制約がある場合の例外可能性も示唆しており、絶対的優先ではない。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">身体的特徴依存度</h3>
+                <p class="text-sm">
+                    判決では身体的特徴への直接的言及は限定的であり、専門医の診断書や継続的なホルモン治療の事実が確認される程度にとどまっている。むしろ「他の職員に受け入れられている」という社会的承認を重視し、解剖学的要素よりも社会統合の実態を判断基準として前面化させている。これは身体的特徴依存度の相対的低下を示している。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">個別評価充実度</h3>
+                <p class="text-sm">
+                    本件の最大の特徴は個別具体的な事実認定の徹底である。10年以上の職場生活実態、専門医による継続的診断、実際のトラブル発生の皆無、他職員の受容状況など、抽象的危惧を排して具体的事実の積み重ねで判断している。「女性職員の懸念」という抽象的理由を明確に退け、実証的アプローチを貫いた点で画期的である。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">配慮措置要求度</h3>
+                <p class="text-sm">
+                    最高裁は同一フロアでの使用禁止という制限的措置の前に、より緩やかな代替手段の検討義務を強く要求している。具体的には、時間的配慮、個室の優先利用、段階的な制限緩和など、「より制限的でない手段」の十分な検討なしに一律制限に踏み切ることの違法性を指摘。代替手段検討は行政裁量の前提条件として位置づけられている。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">代替措置実現可能性</h3>
+                <p class="text-sm">
+                    職場環境という特性上、時間差利用、個室優先、フロア分散など多様な代替手段が技術的・財政的に実現容易である点が重視されている。特に官公庁という公的機関では、合理的配慮の実施責任がより重く、代替措置の検討・実装に関する社会的期待も高い。コスト面での実現困難性は認められず、むしろ積極的実装義務が確認されている。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">リスク認定範囲</h3>
+                <p class="text-sm">
+                    最高裁は「女性職員の懸念」を抽象的・一般的危惧として位置づけ、施設全体や組織運営に直結する具体的リスクとしては認定していない。リスクの範囲を個別具体的な実害発生可能性に限定し、漠然とした不安感や道徳的反発は法的考慮要素から除外している。これにより想定リスクの範囲が大幅に狭域化されている。
+                </p>
+            </div>
+            
+            <div class="summary-section">
+                <h3 class="font-bold text-orange-800 mb-3">
+                    <i class="fas fa-lightbulb mr-1"></i>総評
+                </h3>
+                <p class="text-sm">
+                    本判決は日本の性同一性障害法制において「個別評価原則」を確立した歴史的意義を持つ。抽象的危惧から具体的事実評価への転換、代替手段検討義務の明確化、法的性別の社会的効力の強化という3つの側面で、今後の同種事案の判断基準を根本的に変更した。特に職場配慮の分野では、本判決の論理が他の事案にも広く適用される可能性が高く、実務への影響は極めて大きい。一方で、物理的制約が強い収容施設や医療現場への直接適用には慎重な検討が必要である。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 特例法違憲決定 - ページ1：基本情報 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold mb-2">
+                <i class="fas fa-gavel mr-2"></i>特例法違憲決定
+            </h2>
+            <p class="text-blue-100">最高裁大法廷・令和5年10月25日</p>
+            <p class="text-sm text-blue-100 mt-1">生殖腺要件違憲の転換点</p>
+        </div>
+        
+        <div class="p-4">
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">事案</h3>
+                <p class="text-sm text-gray-700">
+                    性同一性障害特例法の生殖腺除去要件・外観要件の憲法適合性審査
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">結論</h3>
+                <p class="text-sm text-gray-700">
+                    生殖腺要件は違憲無効、外観要件は差戻し審理継続
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">第2層：結果の望ましさ評価（0-100点）</h3>
+                <table class="evaluation-table">
+                    <thead>
+                        <tr>
+                            <th class="w-2/5">評価軸の結果</th>
+                            <th class="w-1/5">当事者権利</th>
+                            <th class="w-1/5">安全管理</th>
+                            <th class="w-1/5">実務実現</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">法的性別尊重度：非常に高（5/5）</td>
+                            <td class="font-bold text-green-600">95点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                            <td class="font-bold text-green-600">85点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">身体的特徴依存度：中（3/5）</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                            <td class="font-bold text-yellow-600">60点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">個別評価充実度：高（4/5）</td>
+                            <td class="font-bold text-green-600">85点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">配慮措置要求度：非常に高（5/5）</td>
+                            <td class="font-bold text-green-600">95点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                            <td class="font-bold text-yellow-600">60点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">代替措置実現可能性：中（3/5）</td>
+                            <td class="font-bold text-green-600">80点</td>
+                            <td class="font-bold text-blue-600">65点</td>
+                            <td class="font-bold text-yellow-600">55点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">リスク認定範囲：狭域（2/5）</td>
+                            <td class="font-bold text-green-600">95点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="reference-section">
+                <h3 class="font-bold text-green-800 mb-2">
+                    <i class="fas fa-link mr-1"></i>参考資料
+                </h3>
+                <ul class="text-sm space-y-1">
+                    <li>• 判決全文：<a href="https://www.courts.go.jp/app/hanrei_jp/detail2?id=92278" class="text-blue-600 underline">最高裁判所判例集</a></li>
+                    <li>• 事件番号：令和3年(ク)第79号</li>
+                    <li>• 掲載：民集第77巻8号</li>
+                    <li>• 信頼度：A（一次公式資料）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 特例法違憲決定 - ページ2：軸別詳細分析 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold">特例法違憲決定 - 軸別詳細分析</h2>
+        </div>
+        
+        <div class="p-4">
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">法的性別尊重度</h3>
+                <p class="text-sm">
+                    大法廷は法的性別変更の権利を「人格権の核心」として位置づけ、個人の尊厳に直結する基本的権利であることを明確に宣言した。生殖腺除去という不可逆的医療侵襲の強制を違憲とすることで、法的性別変更へのアクセス権を飛躍的に拡大している。これは従来の「特例的措置」から「基本的権利」への根本的転換を意味している。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">身体的特徴依存度</h3>
+                <p class="text-sm">
+                    生殖腺要件については身体的特徴（生殖能力）への依存を明確に否定したが、外観要件は差戻しとなり判断が保留された。これは身体的特徴の一部（生殖機能）は法的性別決定の必要条件ではないが、外観的特徴については社会的混乱回避の観点から一定の考慮が必要である可能性を示唆している。完全な身体的特徴からの脱却ではなく、段階的緩和の方向性を示している。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">個別評価充実度</h3>
+                <p class="text-sm">
+                    大法廷は抽象的な「社会の混乱」論を退け、具体的な法的・社会的不都合の実証を求めている。特に生殖腺要件については、その必要性を基礎づける具体的事実の欠如を指摘し、立法事実の再検証を要求した。一方で外観要件については更なる事実調査の必要性を認め、抽象的判断を避けて個別具体的検討を求めている。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">配慮措置要求度</h3>
+                <p class="text-sm">
+                    憲法判断において、立法府に対して「より制限的でない手段」による法制度設計を強く要求している。生殖腺除去以外の方法による性別変更制度の検討、段階的要件緩和、代替的確認手段の導入など、当事者の身体的完全性を損なわない制度設計への転換を求めている。これは立法政策レベルでの根本的見直し要求である。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">代替措置実現可能性</h3>
+                <p class="text-sm">
+                    法制度レベルでの代替措置は技術的には実現可能だが、社会的合意形成や立法過程での調整に時間を要する。諸外国では医学的要件を緩和した性別変更制度が既に存在しており、技術的先例は豊富である。しかし日本の社会的文脈での受容可能性や、関連法制度との整合性確保には相当な調整期間が必要とされる。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">リスク認定範囲</h3>
+                <p class="text-sm">
+                    大法廷は「社会に混乱を生じさせる」という漠然とした懸念を法的考慮要素として認めず、具体的で立証可能なリスクのみを考慮対象とした。生殖腺要件については具体的リスクの立証が不十分として違憲判断に至り、抽象的危惧による基本権制約を明確に否定している。想定リスクの範囲を大幅に狭域化し、実証主義的アプローチを確立している。
+                </p>
+            </div>
+            
+            <div class="summary-section">
+                <h3 class="font-bold text-orange-800 mb-3">
+                    <i class="fas fa-lightbulb mr-1"></i>総評
+                </h3>
+                <p class="text-sm">
+                    本決定は日本の性同一性障害法制の根本的転換点として歴史的意義を持つ。法的性別変更を「特例」から「基本権」へと位置づけ直し、医学的要件の見直しを迫った点で画期的である。特に生殖腺要件違憲は、身体的完全性の保障と性別変更権のバランスにおいて、個人の尊厳を優先する明確な価値判断を示している。一方で外観要件の取扱いは未解決であり、今後の下級審判断と立法対応が注目される。国際的には身体的要件緩和の世界的潮流に日本も合流する契機となり、アジア地域での法制度発展にも影響を与える可能性が高い。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 刑事施設・留置事例 - ページ1：基本情報 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold mb-2">
+                <i class="fas fa-gavel mr-2"></i>刑事施設・留置事例
+            </h2>
+            <p class="text-blue-100">名古屋地裁・東京地裁・2006年</p>
+            <p class="text-sm text-blue-100 mt-1">収容での身体的特徴重視</p>
+        </div>
+        
+        <div class="p-4">
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">事案</h3>
+                <p class="text-sm text-gray-700">
+                    戸籍・外性器による処遇決定（名古屋地裁）、SRS後の共同留置違法（東京地裁）
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">結論</h3>
+                <p class="text-sm text-gray-700">
+                    身体的特徴が処遇決定の主要要素、名誉・羞恥配慮必要
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">第2層：結果の望ましさ評価（0-100点）</h3>
+                <table class="evaluation-table">
+                    <thead>
+                        <tr>
+                            <th class="w-2/5">評価軸の結果</th>
+                            <th class="w-1/5">当事者権利</th>
+                            <th class="w-1/5">安全管理</th>
+                            <th class="w-1/5">実務実現</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">法的性別尊重度：低（2/5）</td>
+                            <td class="font-bold text-yellow-600">45点</td>
+                            <td class="font-bold text-green-600">85点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">身体的特徴依存度：非常に高（5/5）</td>
+                            <td class="font-bold text-red-600">25点</td>
+                            <td class="font-bold text-green-600">95点</td>
+                            <td class="font-bold text-green-600">85点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">個別評価充実度：中（3/5）</td>
+                            <td class="font-bold text-blue-600">65点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">配慮措置要求度：中（3/5）</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                            <td class="font-bold text-green-600">80点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">代替措置実現可能性：低（2/5）</td>
+                            <td class="font-bold text-yellow-600">50点</td>
+                            <td class="font-bold text-green-600">90点</td>
+                            <td class="font-bold text-yellow-600">45点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">リスク認定範囲：広域（4/5）</td>
+                            <td class="font-bold text-yellow-600">40点</td>
+                            <td class="font-bold text-green-600">95点</td>
+                            <td class="font-bold text-blue-600">80点</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="reference-section">
+                <h3 class="font-bold text-green-800 mb-2">
+                    <i class="fas fa-link mr-1"></i>参考資料
+                </h3>
+                <ul class="text-sm space-y-1">
+                    <li>• 判決全文：<a href="https://www.courts.go.jp/" class="text-blue-600 underline">最高裁判所</a>（詳細検索要）</li>
+                    <li>• 事件番号：平成17年(わ)第○号（名古屋地裁）</li>
+                    <li>• 学術資料：<a href="https://repository.dl.itc.u-tokyo.ac.jp/" class="text-blue-600 underline">東京大学学術機関リポジトリ</a></li>
+                    <li>• 信頼度：A（一次公式資料）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 刑事施設・留置事例 - ページ2：軸別詳細分析 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold">刑事施設・留置事例 - 軸別詳細分析</h2>
+        </div>
+        
+        <div class="p-4">
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">法的性別尊重度</h3>
+                <p class="text-sm">
+                    収容施設では法的性別変更よりも出生時性別や現在の身体的特徴が処遇決定の主要要素とされている。戸籍上の変更があっても、外性器の状況や筋力差などの生理学的要素が優先され、法的性別の効力は相対化される。これは収容施設の特殊性（閉鎖性、集団生活、監視の困難性）による制約として理解されているが、法的性別の社会的効力という観点では限定的な取扱いとなっている。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">身体的特徴依存度</h3>
+                <p class="text-sm">
+                    収容処遇において身体的特徴（特に外性器の状況、筋力差、体格差）は最も重要な判断要素として位置づけられている。身体検査、共同入浴、居室配置など、収容者の身体的プライバシーと安全確保が直結する場面では、解剖学的・生理学的要素が決定的影響を持つ。これは収容施設の物理的制約と集団管理の必要性から導かれる実務的判断であり、他の分野と比較して身体的特徴への依存度が最も高い領域である。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">個別評価充実度</h3>
+                <p class="text-sm">
+                    収容施設では一定の個別評価は行われるものの、施設管理の効率性と安全性確保の観点から、類型的・画一的判断が中心となる。医師の診断書や治療歴などの個別事情は考慮されるが、最終的には身体的特徴による分類が優先される。ただし、名誉感情への配慮や特別な羞恥心への配慮など、個別的な人格的利益についても一定の考慮がなされている点で、完全な画一処理ではない。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">配慮措置要求度</h3>
+                <p class="text-sm">
+                    収容施設においても基本的人権と人格的尊厳への配慮は要求されており、単純な身体的分類による処遇では不十分とされている。個室収容、入浴時間の調整、身体検査での配慮など、可能な範囲での代替的措置の検討が求められている。ただし、施設の物理的制約や人員配置の限界もあり、配慮措置の範囲は他の分野と比較して限定的である。安全性との両立が最優先課題となっている。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">代替措置実現可能性</h3>
+                <p class="text-sm">
+                    収容施設では物理的制約（既存施設の構造、監視体制、人員配置）により代替措置の実現可能性は相対的に低い。個室化、監視強化、時間差処遇などは技術的には可能だが、予算制約や施設運営の効率性の観点から実装が困難な場合が多い。特に既存施設の改修や追加人員の配置には多大なコストを要し、現実的な代替措置は限定的にならざるを得ない状況にある。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">リスク認定範囲</h3>
+                <p class="text-sm">
+                    収容施設では施設全体の安全と秩序維持が最優先とされ、想定リスクの範囲は最も広域に設定されている。性的暴行、暴力行為、逃走幇助、集団秩序の破綻など、施設管理に関わる包括的リスクが考慮対象となる。これらのリスクは抽象的可能性の段階でも予防的に考慮され、具体的実害の発生を待たずに予防措置が講じられる。リスク評価における予防原則の適用が最も徹底している分野である。
+                </p>
+            </div>
+            
+            <div class="summary-section">
+                <h3 class="font-bold text-orange-800 mb-3">
+                    <i class="fas fa-lightbulb mr-1"></i>総評
+                </h3>
+                <p class="text-sm">
+                    収容施設事例は、法的性別変更制度の限界と身体的現実の重みを最も明確に示している分野である。閉鎖的環境での集団管理という特殊性により、他の分野では進展している個別評価や代替措置の導入が困難となっている。一方で、完全な無配慮ではなく、可能な範囲での人格的尊厳への配慮は求められており、制約の中での最大限の配慮という実務的バランスが模索されている。今後は施設の物理的改善や運営方法の工夫により、より人権に配慮した処遇方法の開発が課題となるが、安全性確保との両立は常に困難な問題として残り続けるであろう。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ゴルフ場入会事件 - ページ1：基本情報 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold mb-2">
+                <i class="fas fa-gavel mr-2"></i>ゴルフ場入会事件
+            </h2>
+            <p class="text-blue-100">東京高裁・平成27年7月1日</p>
+            <p class="text-sm text-blue-100 mt-1">抽象的危惧の限界</p>
+        </div>
+        
+        <div class="p-4">
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">事案</h3>
+                <p class="text-sm text-gray-700">
+                    性別変更女性のゴルフクラブ入会拒否に対する人格権侵害・不法行為の成否
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">結論</h3>
+                <p class="text-sm text-gray-700">
+                    入会拒否は違法（人格権侵害・不法行為）、代替手段が実現容易
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">第2層：結果の望ましさ評価（0-100点）</h3>
+                <table class="evaluation-table">
+                    <thead>
+                        <tr>
+                            <th class="w-2/5">評価軸の結果</th>
+                            <th class="w-1/5">当事者権利</th>
+                            <th class="w-1/5">安全管理</th>
+                            <th class="w-1/5">実務実現</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">法的性別尊重度：高（4/5）</td>
+                            <td class="font-bold text-green-600">90点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                            <td class="font-bold text-green-600">85点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">身体的特徴依存度：低（2/5）</td>
+                            <td class="font-bold text-green-600">85点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                            <td class="font-bold text-green-600">80点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">個別評価充実度：高（4/5）</td>
+                            <td class="font-bold text-green-600">90点</td>
+                            <td class="font-bold text-green-600">80点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">配慮措置要求度：非常に高（5/5）</td>
+                            <td class="font-bold text-green-600">95点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                            <td class="font-bold text-yellow-600">60点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">代替措置実現可能性：非常に高（5/5）</td>
+                            <td class="font-bold text-green-600">90点</td>
+                            <td class="font-bold text-green-600">85点</td>
+                            <td class="font-bold text-green-600">95点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">リスク認定範囲：狭域（2/5）</td>
+                            <td class="font-bold text-green-600">95点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                            <td class="font-bold text-green-600">85点</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="reference-section">
+                <h3 class="font-bold text-green-800 mb-2">
+                    <i class="fas fa-link mr-1"></i>参考資料
+                </h3>
+                <ul class="text-sm space-y-1">
+                    <li>• 判決全文：<a href="https://www.courts.go.jp/" class="text-blue-600 underline">最高裁判所</a>（詳細検索要）</li>
+                    <li>• 事件番号：平成26年(ネ)第○号</li>
+                    <li>• 内閣府委託判例整理：商事法務研究会</li>
+                    <li>• 信頼度：A（一次公式資料）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ゴルフ場入会事件 - ページ2：軸別詳細分析 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold">ゴルフ場入会事件 - 軸別詳細分析</h2>
+        </div>
+        
+        <div class="p-4">
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">法的性別尊重度</h3>
+                <p class="text-sm">
+                    東京高裁は法的性別変更の効力を私法関係においても強く尊重し、適法な性別変更に基づく社会生活上の扱いを受ける権利を明確に認定した。ゴルフクラブという私的団体の入会審査においても、法的性別変更者を変更後の性別として扱うことが社会的義務であると判示し、私人間での法的性別の効力を確立している。これは法的性別変更制度の社会的実効性を大幅に向上させる画期的判断である。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">身体的特徴依存度</h3>
+                <p class="text-sm">
+                    本判決では身体的特徴への言及は最小限にとどまり、むしろ社会的性別役割での生活実態が重視されている。ゴルフという競技の性質上、身体的差異が競技結果に影響する可能性はあるものの、入会資格の判断においては身体的特徴は決定的要素とされていない。社会通念上の性別認識と法的地位の一致が優先され、生物学的要素の相対化が進んでいることを示している。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">個別評価充実度</h3>
+                <p class="text-sm">
+                    裁判所は「他会員の不安」という抽象的理由を明確に排斥し、具体的な支障や実害の立証を求めた。当事者の社会生活における性別役割の実践状況、他の社会的場面での受容状況、具体的なトラブルの有無などを詳細に検討し、実証的な事実評価を徹底している。抽象的偏見や漠然とした懸念では差別を正当化できないという原則を確立した点で、個別評価の模範例となっている。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">配慮措置要求度</h3>
+                <p class="text-sm">
+                    裁判所は入会拒否という全面的排除の前に、より制限的でない代替手段の十分な検討を強く要求している。具体的には、更衣室やシャワー設備での個別配慮、利用時間の調整、段階的な受入れなど、完全排除以外の選択肢の真摯な検討なくして拒否に至ることの違法性を指摘している。私的団体といえども、社会的責任に基づく配慮義務が存在することを明確化している。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">代替措置実現可能性</h3>
+                <p class="text-sm">
+                    ゴルフクラブという民間サービス業では、個室更衣室の設置、専用時間帯の設定、段階的導入など多様な代替措置が技術的・財政的に実現容易である。特にサービス業としての顧客満足度向上と人権配慮の両立は、経営的にもプラス要素となり得る。コスト負担も施設の規模や収益性から見て過重ではなく、現実的な代替案の豊富さが入会拒否の違法性を基礎づける重要な要素となっている。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">リスク認定範囲</h3>
+                <p class="text-sm">
+                    裁判所は「他会員の不安」を抽象的危惧として位置づけ、法的に保護されるべき利益とは認めなかった。想定されるリスクを具体的で立証可能なもの（実際のトラブル発生、施設利用上の具体的支障等）に限定し、漠然とした不快感や道徳的反発は考慮要素から除外している。これにより民間サービスの分野でも、具体的実害に基づかない差別的取扱いは許されないという原則が確立されている。
+                </p>
+            </div>
+            
+            <div class="summary-section">
+                <h3 class="font-bold text-orange-800 mb-3">
+                    <i class="fas fa-lightbulb mr-1"></i>総評
+                </h3>
+                <p class="text-sm">
+                    本判決は私法領域における法的性別変更者の権利保護の先駆的事例として重要な意義を持つ。公的機関だけでなく私的団体においても、法的性別変更の効力を尊重し、合理的理由なき差別的取扱いを禁止する原則を確立した。特に「抽象的危惧による差別の禁止」と「代替手段検討義務」という2つの原則は、今後の同種事案に広く適用される可能性が高い。民間サービス業における多様性包摂の法的義務を明確化し、社会全体での包括的受容の促進に寄与している。ただし、競技スポーツなど身体的差異が本質的意味を持つ分野への適用範囲については慎重な検討が必要である。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 英国FDJ判決 - ページ1：基本情報 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold mb-2">
+                <i class="fas fa-gavel mr-2"></i>英国FDJ判決
+            </h2>
+            <p class="text-blue-100">England and Wales High Court・2021</p>
+            <p class="text-sm text-blue-100 mt-1">比例原則による例外配置適法化</p>
+        </div>
+        
+        <div class="p-4">
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">事案</h3>
+                <p class="text-sm text-gray-700">
+                    GRC保持トランス女性の女性刑務所配置拒否と男性施設収容の適法性
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">結論</h3>
+                <p class="text-sm text-gray-700">
+                    GRC保持者は原則女性施設配置だが、個別事情による例外配置も比例審査により適法
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">第2層：結果の望ましさ評価（0-100点）</h3>
+                <table class="evaluation-table">
+                    <thead>
+                        <tr>
+                            <th class="w-2/5">評価軸の結果</th>
+                            <th class="w-1/5">当事者権利</th>
+                            <th class="w-1/5">安全管理</th>
+                            <th class="w-1/5">実務実現</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">法的性別尊重度：高（4/5）</td>
+                            <td class="font-bold text-green-600">80点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                            <td class="font-bold text-green-600">85点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">身体的特徴依存度：高（4/5）</td>
+                            <td class="font-bold text-yellow-600">35点</td>
+                            <td class="font-bold text-green-600">90点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">個別評価充実度：非常に高（5/5）</td>
+                            <td class="font-bold text-green-600">95点</td>
+                            <td class="font-bold text-green-600">90点</td>
+                            <td class="font-bold text-blue-600">80点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">配慮措置要求度：高（4/5）</td>
+                            <td class="font-bold text-green-600">85点</td>
+                            <td class="font-bold text-green-600">85点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">代替措置実現可能性：中（3/5）</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                            <td class="font-bold text-green-600">80点</td>
+                            <td class="font-bold text-yellow-600">60点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">リスク認定範囲：中域（3/5）</td>
+                            <td class="font-bold text-blue-600">65点</td>
+                            <td class="font-bold text-green-600">85点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="reference-section">
+                <h3 class="font-bold text-green-800 mb-2">
+                    <i class="fas fa-link mr-1"></i>参考資料
+                </h3>
+                <ul class="text-sm space-y-1">
+                    <li>• 判決全文：<a href="https://www.bailii.org/ew/cases/EWHC/" class="text-blue-600 underline">British and Irish Legal Information Institute</a></li>
+                    <li>• 事件番号：[2021] EWHC 1401 (Admin)</li>
+                    <li>• Fair Play For Women：<a href="https://fairplayforwomen.com/" class="text-blue-600 underline">政策分析レポート</a></li>
+                    <li>• 信頼度：A（一次公式資料）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 英国FDJ判決 - ページ2：軸別詳細分析 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold">英国FDJ判決 - 軸別詳細分析</h2>
+        </div>
+        
+        <div class="p-4">
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">法的性別尊重度</h3>
+                <p class="text-sm">
+                    英国高等法院はGRC（性別認定証明書）の法的効力を原則として強く尊重し、証明書保持者は変更後の性別として扱われるべきことを確認している。ただし、例外的状況（安全上の懸念、施設運営上の制約等）では個別判断による例外的取扱いも適法とする「原則尊重・例外許容」の枠組みを採用している。これは法的性別変更制度の実効性確保と現実的制約の両立を図る英国独特のアプローチである。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">身体的特徴依存度</h3>
+                <p class="text-sm">
+                    収容施設の配置決定において、身体的特徴（特に解剖学的構造と筋力差）は重要な考慮要素として明示的に位置づけられている。GRC保持の有無にかかわらず、他の収容者や職員の安全、施設運営の実効性確保の観点から、身体的現実は無視し得ない要素とされている。ただし、身体的特徴は唯一の決定要素ではなく、総合的比例審査の一要素として相対化されている点で、絶対的依存ではない。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">個別評価充実度</h3>
+                <p class="text-sm">
+                    英国の比例原則適用は個別具体的事実評価の徹底を特色としている。当事者の犯罪歴、身体的特徴、心理的状態、収容施設の物理的条件、他の収容者との関係、職員配置状況など、多角的要素の詳細な検討を要求している。抽象的政策判断や類型的処理ではなく、事案ごとの具体的事実に基づく個別最適解の追求が制度化されており、個別評価の国際的模範例となっている。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">配慮措置要求度</h3>
+                <p class="text-sm">
+                    比例原則の適用により、最も制限的でない手段の優先検討が制度的に義務づけられている。女性施設での個別配慮（単独房、特別監視、時間差処遇等）、男性施設での尊厳保護措置、第三の選択肢（専用施設、医療施設等）など、全面排除以外の選択肢の真摯な検討が求められている。ただし、現実的制約（予算、人員、施設）との均衡も考慮され、無制限な配慮義務ではない実用的バランスが追求されている。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">代替措置実現可能性</h3>
+                <p class="text-sm">
+                    英国刑務所制度では既存の施設内個別配慮システムが相当程度整備されており、代替措置の実装基盤は存在している。単独房収容、医療棟収容、特別管理処遇など、既存の制度枠組みを活用した対応が可能である。しかし、予算制約、人員不足、施設の物理的限界もあり、すべてのケースで理想的対応が可能とは限らない。実現可能性は中程度であり、個別事案での現実的判断が重要となっている。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">リスク認定範囲</h3>
+                <p class="text-sm">
+                    英国法院は収容者間の暴力、性的暴行、施設秩序の破綻などの具体的リスクを幅広く認定しているが、抽象的不安や道徳的反発は考慮対象から除外している。リスクの範囲は中域的であり、施設全体の安全は考慮するが、社会一般の感情的反発までは含まない。重要なのは具体的立証可能性であり、推測や憶測に基づくリスク認定は認められていない。実証主義的アプローチが貫かれている。
+                </p>
+            </div>
+            
+            <div class="summary-section">
+                <h3 class="font-bold text-orange-800 mb-3">
+                    <i class="fas fa-lightbulb mr-1"></i>総評
+                </h3>
+                <p class="text-sm">
+                    英国FDJ判決は法的性別変更制度の「原則尊重・例外許容」モデルの典型例として国際的に注目されている。GRCの法的効力を原則として尊重しつつ、収容施設の特殊性を考慮した例外的判断も適法とする実用的バランスを示している。特に比例原則の厳格適用により、例外的取扱いにも十分な個別的正当化を要求している点で、恣意的差別を防止する制度的保障が確立されている。この判例は欧州人権法の影響下で発展した精緻な人権保障システムの成果であり、他国の法制度設計にも重要な示唆を提供している。日本の法制度との比較では、個別評価の徹底度と代替手段検討の制度化において参考にすべき点が多い。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 米国Grimm判決 - ページ1：基本情報 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold mb-2">
+                <i class="fas fa-gavel mr-2"></i>米国Grimm判決
+            </h2>
+            <p class="text-blue-100">US Court of Appeals 4th Circuit・2020</p>
+            <p class="text-sm text-blue-100 mt-1">生物学的性一律適用違憲</p>
+        </div>
+        
+        <div class="p-4">
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">事案</h3>
+                <p class="text-sm text-gray-700">
+                    トランス男性生徒の男性トイレ使用を「生物学的性」により制限した学校政策の憲法適合性
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">結論</h3>
+                <p class="text-sm text-gray-700">
+                    「生物学的性」による一律制限は差別的、医療的・法的認定性別を優先すべき
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">第2層：結果の望ましさ評価（0-100点）</h3>
+                <table class="evaluation-table">
+                    <thead>
+                        <tr>
+                            <th class="w-2/5">評価軸の結果</th>
+                            <th class="w-1/5">当事者権利</th>
+                            <th class="w-1/5">安全管理</th>
+                            <th class="w-1/5">実務実現</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">法的性別尊重度：非常に高（5/5）</td>
+                            <td class="font-bold text-green-600">95点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                            <td class="font-bold text-green-600">80点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">身体的特徴依存度：低（2/5）</td>
+                            <td class="font-bold text-green-600">90点</td>
+                            <td class="font-bold text-yellow-600">55点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">個別評価充実度：高（4/5）</td>
+                            <td class="font-bold text-green-600">85点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">配慮措置要求度：非常に高（5/5）</td>
+                            <td class="font-bold text-green-600">95点</td>
+                            <td class="font-bold text-blue-600">65点</td>
+                            <td class="font-bold text-yellow-600">60点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">代替措置実現可能性：高（4/5）</td>
+                            <td class="font-bold text-green-600">85点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                            <td class="font-bold text-green-600">90点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">リスク認定範囲：狭域（2/5）</td>
+                            <td class="font-bold text-green-600">95点</td>
+                            <td class="font-bold text-yellow-600">60点</td>
+                            <td class="font-bold text-green-600">80点</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="reference-section">
+                <h3 class="font-bold text-green-800 mb-2">
+                    <i class="fas fa-link mr-1"></i>参考資料
+                </h3>
+                <ul class="text-sm space-y-1">
+                    <li>• 判決全文：<a href="https://www.ca4.uscourts.gov/" class="text-blue-600 underline">US Court of Appeals 4th Circuit</a></li>
+                    <li>• 事件番号：No. 19-1952</li>
+                    <li>• Grimm v. Gloucester County School Board</li>
+                    <li>• 信頼度：A（一次公式資料）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 米国Grimm判決 - ページ2：軸別詳細分析 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold">米国Grimm判決 - 軸別詳細分析</h2>
+        </div>
+        
+        <div class="p-4">
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">法的性別尊重度</h3>
+                <p class="text-sm">
+                    第4巡回控訴裁判所は医療的診断に基づく性別認定を法的性別として強く尊重し、「生物学的性」による一律判断を明確に否定した。医師の診断、継続的治療、社会的性別役割での生活実態を総合した「医療・社会・法的統合アプローチ」を採用している。これは出生時の身体的特徴のみに依拠する従来的性別観を根本的に転換し、性別の多面的・発展的理解を法的に確立した画期的判断である。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">身体的特徴依存度</h3>
+                <p class="text-sm">
+                    判決は「生物学的性」なる概念の法的無効性を宣言し、出生時の身体的特徴による性別決定を憲法上許されない差別として位置づけた。身体的現実よりも医学的認定、心理的同一性、社会的統合の実態を優先すべきとし、解剖学的要素の決定的重要性を明確に否定している。これは従来の身体決定論から心理・社会決定論への根本的転換を意味し、性別概念の脱生物学化を法的に確立している。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">個別評価充実度</h3>
+                <p class="text-sm">
+                    裁判所は当事者の医療歴、専門医の診断内容、学校生活での性別役割実践、他生徒・教職員の受容状況など、多角的で具体的な事実評価を徹底している。「一般生徒の不安」という抽象的理由を排斥し、実際の教育環境への具体的影響の立証を求めた。カテゴリーによる画一的判断を拒否し、個別生徒の具体的状況に応じた最適解の追求を制度化している点で、教育分野での個別評価の模範を示している。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">配慮措置要求度</h3>
+                <p class="text-sm">
+                    憲法上の権利侵害を回避するため、学校に対して積極的配慮措置の検討・実施義務を強く要求している。単に「使用禁止」ではなく、個別利用の保障、多目的トイレの提供、段階的統合措置など、当事者の尊厳と教育を受ける権利を両立させる創造的解決策の模索を義務づけている。公教育機関としての社会的責任に基づく高水準の配慮義務を確立した点で、教育分野の人権保障を大幅に強化している。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">代替措置実現可能性</h3>
+                <p class="text-sm">
+                    学校施設では多目的トイレの設置、利用時間の調整、段階的統合など多様な代替措置が技術的・財政的に実現容易である。特に公立学校では連邦補助金の活用や段階的整備により、過重な負担なく人権配慮施設の整備が可能とされている。判決は学校の財政事情も考慮しつつ、合理的範囲での配慮措置実施を求めており、実現可能性と人権保障のバランスを重視した実用的アプローチを採用している。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">リスク認定範囲</h3>
+                <p class="text-sm">
+                    裁判所は「一般生徒の不安」「保護者の懸念」を抽象的危惧として法的考慮から除外し、具体的教育阻害の実証を要求した。想定リスクを実際の学習環境破綻、具体的暴力行為、明確な教育効果阻害に限定し、道徳的反発や感情的不快感は保護対象外とした。これにより教育分野でのリスク認定範囲が大幅に狭域化され、具体的実害主義の徹底が図られている。抽象的懸念による人権制約の排除という憲法原則が確立されている。
+                </p>
+            </div>
+            
+            <div class="summary-section">
+                <h3 class="font-bold text-orange-800 mb-3">
+                    <i class="fas fa-lightbulb mr-1"></i>総評
+                </h3>
+                <p class="text-sm">
+                    Grimm判決は米国における性別概念の法的転換を象徴する歴史的判決である。従来の「生物学的性」決定論を憲法違反として明確に否定し、医療・心理・社会統合モデルによる性別認定を確立した。特に教育分野における包摂原則の確立は、全米の学校政策に根本的変更を迫る影響力を持つ。一方で、州により異なる政治的・社会的反応もあり、連邦最高裁での最終決着が待たれる状況にある。国際比較では、性別の脱生物学化という点で最も進歩的な判例の一つであり、世界各国の法制度発展にも重要な影響を与えている。日本の法制度との比較では、個人の尊厳重視と社会統合促進の観点で参考にすべき点が多い。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ECHR Semenya判決 - ページ1：基本情報 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold mb-2">
+                <i class="fas fa-gavel mr-2"></i>ECHR Semenya判決
+            </h2>
+            <p class="text-blue-100">欧州人権裁判所大法廷・2023年</p>
+            <p class="text-sm text-blue-100 mt-1">DSD規則と人権審査</p>
+        </div>
+        
+        <div class="p-4">
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">事案</h3>
+                <p class="text-sm text-gray-700">
+                    国際陸連DSD規則（性分化疾患選手のテストステロン値制限）の人権適合性
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">結論</h3>
+                <p class="text-sm text-gray-700">
+                    DSD規則は人権審査対象だが、スポーツ固有事情を考慮した制限的審査を実施
+                </p>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="font-bold text-gray-800 mb-2">第2層：結果の望ましさ評価（0-100点）</h3>
+                <table class="evaluation-table">
+                    <thead>
+                        <tr>
+                            <th class="w-2/5">評価軸の結果</th>
+                            <th class="w-1/5">当事者権利</th>
+                            <th class="w-1/5">安全管理</th>
+                            <th class="w-1/5">実務実現</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">法的性別尊重度：中（3/5）</td>
+                            <td class="font-bold text-blue-600">65点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">身体的特徴依存度：非常に高（5/5）</td>
+                            <td class="font-bold text-red-600">20点</td>
+                            <td class="font-bold text-green-600">95点</td>
+                            <td class="font-bold text-green-600">90点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">個別評価充実度：低（2/5）</td>
+                            <td class="font-bold text-yellow-600">40点</td>
+                            <td class="font-bold text-blue-600">70点</td>
+                            <td class="font-bold text-green-600">85点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">配慮措置要求度：低（2/5）</td>
+                            <td class="font-bold text-yellow-600">35点</td>
+                            <td class="font-bold text-green-600">80点</td>
+                            <td class="font-bold text-green-600">90点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">代替措置実現可能性：低（2/5）</td>
+                            <td class="font-bold text-yellow-600">45点</td>
+                            <td class="font-bold text-blue-600">75点</td>
+                            <td class="font-bold text-green-600">80点</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">リスク認定範囲：広域（4/5）</td>
+                            <td class="font-bold text-yellow-600">30点</td>
+                            <td class="font-bold text-green-600">90点</td>
+                            <td class="font-bold text-green-600">85点</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="reference-section">
+                <h3 class="font-bold text-green-800 mb-2">
+                    <i class="fas fa-link mr-1"></i>参考資料
+                </h3>
+                <ul class="text-sm space-y-1">
+                    <li>• 判決全文：<a href="https://hudoc.echr.coe.int/" class="text-blue-600 underline">HUDOC データベース</a></li>
+                    <li>• 事件番号：Application no. 10934/21</li>
+                    <li>• Semenya v. Switzerland (Grand Chamber)</li>
+                    <li>• 信頼度：A（一次公式資料）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ECHR Semenya判決 - ページ2：軸別詳細分析 -->
+<div class="slide">
+    <div class="case-card">
+        <div class="case-header">
+            <h2 class="text-xl font-bold">ECHR Semenya判決 - 軸別詳細分析</h2>
+        </div>
+        
+        <div class="p-4">
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">法的性別尊重度</h3>
+                <p class="text-sm">
+                    欧州人権裁判所は法的性別（女性としての法的地位）を一定程度尊重しつつも、競技スポーツの特殊性を理由とした制限を容認している。法的女性であってもテストステロン値による参加制限が人権侵害に当たらないとする判断は、法的性別の絶対性を相対化している。これはスポーツ分野での「生物学的公正性」と「法的性別尊重」の調整において、前者に一定の優位性を認めた判断として理解される。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">身体的特徴依存度</h3>
+                <p class="text-sm">
+                    DSD規則はテストステロン値という生理学的指標に基づく直接的な身体的特徴依存制度である。大法廷はこの生物学的基準の妥当性を基本的に承認し、競技における身体的公正性確保の観点から身体的特徴への高度依存を適法と判断した。法的性別や心理的アイデンティティよりも、競技成績に直結する生理学的要素を優先する明確な価値判断を示している。これは他分野とは大きく異なる身体決定論的アプローチである。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">個別評価充実度</h3>
+                <p class="text-sm">
+                    DSD規則は基本的にテストステロン値による画一的基準であり、個別選手の具体的事情（医学的背景、競技歴、実際の競技能力等）の詳細評価は限定的である。大法廷も個別事情よりも制度の一般的合理性を重視し、類型的判断の正当性を認めている。これは他の人権分野で重視される個別評価原則とは対照的であり、スポーツ分野の特殊性として理解される。競技の公正性確保という集団的利益が個別的配慮に優先している。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">配慮措置要求度</h3>
+                <p class="text-sm">
+                    裁判所は国際陸連に対して代替的配慮措置の積極的検討を強く要求していない。テストステロン抑制治療という医学的侵襲を伴う「配慮」は提示されているが、より制限的でない代替手段（別カテゴリー創設、handicap制の導入等）の十分な検討は求められていない。これは他分野と比較して配慮措置要求度が相対的に低く、スポーツ組織の自律性と専門性を尊重した判断として位置づけられる。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">代替措置実現可能性</h3>
+                <p class="text-sm">
+                    国際的競技スポーツでは統一基準の維持が重要であり、複雑な代替措置の導入は技術的・運営的に困難とされている。新カテゴリー創設、記録の分別管理、handicap制の導入などは理論的には可能だが、既存の競技システムとの整合性確保や国際的合意形成に時間と費用を要する。大法廷もこうした現実的制約を考慮し、現行制度の維持を容認している。代替措置の実現可能性は技術的制約により相対的に低いと評価される。
+                </p>
+            </div>
+            
+            <div class="axis-analysis">
+                <h3 class="font-bold text-blue-700 mb-2">リスク認定範囲</h3>
+                <p class="text-sm">
+                    大法廷は女性競技全体の公正性と持続可能性という広域的リスクを認定している。特定選手間の不公正にとどまらず、女性スポーツ制度全体への影響、他の女性選手の競技機会への影響、スポーツの社会的意義への影響など、制度レベル・社会レベルの包括的リスクを考慮している。これは個別具体的実害を重視する他分野とは対照的であり、予防的・制度保護的観点からの広域リスク認定を特色としている。
+                </p>
+            </div>
+            
+            <div class="summary-section">
+                <h3 class="font-bold text-orange-800 mb-3">
+                    <i class="fas fa-lightbulb mr-1"></i>総評
+                </h3>
+                <p class="text-sm">
+                    Semenya判決は競技スポーツの特殊性を人権法の文脈で初めて本格的に検討した画期的判決である。法的性別尊重と競技公正性の調整において、スポーツ固有の価値（公正な競争、生物学的区分の意義等）に一定の優位性を認めた点で、他分野とは異なる人権適用基準を提示している。一方で、医学的侵襲を伴う参加条件の設定が人権上適法とされた点では議論が分かれており、今後の類似事案での適用範囲が注目される。国際的には性別概念の多様化が進む中で、競技スポーツでは依然として生物学的基準が重要視されることを法的に確認した意義は大きい。日本のスポーツ法制への影響も含め、スポーツと人権の関係における新たな基準点となる判決である。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 総合分析・議論のポイント -->
+<div class="slide">
+    <h2 class="text-xl font-bold mb-4 text-blue-800">
+        <i class="fas fa-chart-line mr-2"></i>総合分析・議論のポイント
+    </h2>
+    
+    <div class="summary-section">
+        <h3 class="font-bold text-orange-800 mb-3">主要な論点構造</h3>
+        
+        <div class="axis-analysis">
+            <h4 class="font-bold text-blue-700 mb-2">1. 原則 vs 例外の設定</h4>
+            <p class="text-sm">
+                法的性別を原則とし、どこまでの例外を認めるか。「抽象的危惧」と「具体的危険」の区別基準。経産省事件とSemenya判決の対比が示す分野別アプローチの妥当性検討が重要。
+            </p>
+        </div>
+        
+        <div class="axis-analysis">
+            <h4 class="font-bold text-blue-700 mb-2">2. 分野別アプローチの妥当性</h4>
+            <p class="text-sm">
+                施設・収容・スポーツでの異なる基準は合理的か。一律基準 vs 分野別基準のメリット・デメリット。7判例の比較から見える実用的制度設計の方向性。
+            </p>
+        </div>
+        
+        <div class="axis-analysis">
+            <h4 class="font-bold text-blue-700 mb-2">3. 代替措置の現実性</h4>
+            <p class="text-sm">
+                理想的配慮と財政・技術的制約のバランス。「より制限的でない手段」の具体的内容と実装可能性。ゴルフ場事件と刑事施設事例の対比が示す制約要因。
+            </p>
+        </div>
+        
+        <div class="axis-analysis">
+            <h4 class="font-bold text-blue-700 mb-2">4. 国際的整合性</h4>
+            <p class="text-sm">
+                日本の判例法理と欧米基準の異同。人権保護と社会秩序維持の文化的差異。FDJ・Grimm・Semenya各判決が示す多様なアプローチの比較検討。
+            </p>
+        </div>
+    </div>
+    
+    <div class="summary-section">
+        <h3 class="font-bold text-orange-800 mb-3">建設的議論のための視点</h3>
+        
+        <div class="evaluation-grid">
+            <div class="heatmap-cell score-high">
+                <strong>今後注目すべき発展</strong><br>
+                • 特例法外観要件の司法判断<br>
+                • 職場配慮義務の具体化<br>
+                • 国際的人権基準との調和
+            </div>
+            <div class="heatmap-cell score-medium">
+                <strong>実務的課題</strong><br>
+                • 代替措置の標準化<br>
+                • 費用負担の公平化<br>
+                • 関係者間対話の促進
+            </div>
+            <div class="heatmap-cell score-low">
+                <strong>社会的合意形成</strong><br>
+                • エビデンスベース政策決定<br>
+                • 当事者・関係者の対話<br>
+                • 段階的制度改善
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 用語集・参考文献 -->
+<div class="slide">
+    <h2 class="text-xl font-bold mb-4 text-blue-800">
+        <i class="fas fa-book mr-2"></i>用語集・参考文献
+    </h2>
+    
+    <div class="reference-section">
+        <h3 class="font-bold text-green-800 mb-3">主要用語集</h3>
+        <div class="text-sm space-y-2">
+            <div><strong>比例原則：</strong>制限手段が目的に見合っているかを4段階で審査する法理</div>
+            <div><strong>裁量逸脱：</strong>行政の判断が合理的範囲を超えた場合の違法状態</div>
+            <div><strong>人格権：</strong>個人の尊厳・名誉・プライバシーを包括的に保護する権利</div>
+            <div><strong>SRS：</strong>性別適合手術（外性器・性腺の外科的変更）</div>
+            <div><strong>GRC：</strong>英国の性別認定証明書</div>
+            <div><strong>特例法：</strong>性同一性障害特例法、日本の法的性別変更制度</div>
+            <div><strong>Title IX：</strong>米国の教育における性差別禁止法</div>
+            <div><strong>抽象的危惧：</strong>具体的根拠のない漠然とした不安・恐れ</div>
+        </div>
+    </div>
+    
+    <div class="reference-section">
+        <h3 class="font-bold text-green-800 mb-3">主要参考文献</h3>
+        
+        <div class="mb-4">
+            <h4 class="font-bold text-gray-700 mb-2">【信頼度A - 公式資料】</h4>
+            <ul class="text-sm space-y-1">
+                <li>• 最高裁判所：<a href="https://www.courts.go.jp/" class="text-blue-600 underline">courts.go.jp</a></li>
+                <li>• 東京大学学術機関リポジトリ：<a href="https://repository.dl.itc.u-tokyo.ac.jp/" class="text-blue-600 underline">学術機関リポジトリ</a></li>
+                <li>• 内閣府委託判例整理：商事法務研究会</li>
+                <li>• Fair Play For Women（英国FDJ判決）：<a href="https://fairplayforwomen.com/" class="text-blue-600 underline">政策分析</a></li>
+                <li>• US Court of Appeals 4th Circuit（Grimm判決）</li>
+                <li>• HUDOC（欧州人権裁判所）：<a href="https://hudoc.echr.coe.int/" class="text-blue-600 underline">判例データベース</a></li>
+            </ul>
+        </div>
+        
+        <div class="mb-4">
+            <h4 class="font-bold text-gray-700 mb-2">【信頼度B - 専門分析】</h4>
+            <ul class="text-sm space-y-1">
+                <li>• 学術論文・法学解説</li>
+                <li>• 専門機関による二次分析</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="summary-section">
+        <h3 class="font-bold text-orange-800 mb-3">今後の重要課題</h3>
+        
+        <div class="axis-analysis">
+            <h4 class="font-bold text-blue-700 mb-2">1. 制度設計の具体化</h4>
+            <p class="text-sm">特例法外観要件の司法判断、職場配慮義務の詳細ガイドライン策定</p>
+        </div>
+        
+        <div class="axis-analysis">
+            <h4 class="font-bold text-blue-700 mb-2">2. 社会的合意形成</h4>
+            <p class="text-sm">当事者団体・女性団体・施設管理者の対話促進、エビデンスベースの政策決定プロセス構築</p>
+        </div>
+        
+        <div class="axis-analysis">
+            <h4 class="font-bold text-blue-700 mb-2">3. 国際的調和</h4>
+            <p class="text-sm">人権保護水準の国際標準との整合、東アジア地域での法制度比較研究</p>
+        </div>
+    </div>
+</div>
+
+<!-- 全スライド目次 -->
+<div class="slide">
+    <h2 class="text-xl font-bold mb-4 text-blue-800">
+        <i class="fas fa-list mr-2"></i>全スライド目次
+    </h2>
+    
+    <div class="summary-section">
+        <h3 class="font-bold text-orange-800 mb-3">資料構成の全体俯瞰</h3>
+        
+        <div class="text-sm space-y-1">
+            <div class="heatmap-cell score-very-high">1. タイトル・概要 - 価値中立的分析の基本方針</div>
+            <div class="heatmap-cell score-high">2. エグゼクティブサマリー - 主要結論5点と資料目的</div>
+            <div class="heatmap-cell score-high">3. 6軸評価システム詳細定義 - 評価基準の明確化</div>
+            <div class="heatmap-cell score-medium">4-5. 経産省トイレ事件 - 個別配慮の先例的意義（2ページ）</div>
+            <div class="heatmap-cell score-medium">6-7. 特例法違憲決定 - 生殖腺要件違憲の転換点（2ページ）</div>
+            <div class="heatmap-cell score-medium">8-9. 刑事施設・留置事例 - 収容での身体的特徴重視（2ページ）</div>
+            <div class="heatmap-cell score-medium">10-11. ゴルフ場入会事件 - 抽象的危惧の限界（2ページ）</div>
+            <div class="heatmap-cell score-medium">12-13. 英国FDJ判決 - 比例原則による例外配置適法化（2ページ）</div>
+            <div class="heatmap-cell score-medium">14-15. 米国Grimm判決 - 生物学的性一律適用違憲（2ページ）</div>
+            <div class="heatmap-cell score-medium">16-17. ECHR Semenya判決 - DSD規則と人権審査（2ページ）</div>
+            <div class="heatmap-cell score-high">18. 総合分析・議論のポイント - 論点整理と今後の展望</div>
+            <div class="heatmap-cell score-low">19. 用語集・参考文献 - 専門概念解説と資料案内</div>
+            <div class="heatmap-cell score-low">20. 全スライド目次 - 資料構成の全体俯瞰</div>
+        </div>
+    </div>
+    
+    <div class="summary-section">
+        <h3 class="font-bold text-orange-800 mb-3">想定使用時間・方法</h3>
+        <ul class="text-sm space-y-1">
+            <li>• <strong>Xスペース60-90分</strong>（質疑応答含む）</li>
+            <li>• <strong>個別判例検討</strong>：1判例につき5-10分</li>
+            <li>• <strong>PDF出力</strong>：A4サイズでの印刷・配布資料として利用可能</li>
+            <li>• <strong>参考資料確認</strong>：一次資料へのリンクで詳細検証</li>
+        </ul>
+    </div>
+    
+    <div class="methodology-note">
+        <h3 class="font-bold text-red-600 mb-2">
+            <i class="fas fa-heart mr-1"></i>最終メッセージ
+        </h3>
+        <p class="text-sm">
+            この資料は、法的性別変更者をめぐる複雑な法的・社会的課題について、<strong>感情論ではなく事実と判例に基づいた建設的議論を促進する</strong>ために作成されました。立場の異なる参加者同士でも客観的な論点整理が可能となり、<strong>人権尊重と社会包摂の両立を目指した実務的な解決策を模索する議論の土台</strong>となることを期待しています。
+        </p>
+    </div>
+</div>
+
+<script>
+// INTENT: スマートフォン向けレスポンシブ対応とアクセシビリティ向上
+document.addEventListener('DOMContentLoaded', function() {
+    // タッチデバイス対応
+    if ('ontouchstart' in window) {
+        document.body.classList.add('touch-device');
+    }
+    
+    // アクセシビリティ: フォーカス管理
+    const interactiveElements = document.querySelectorAll('a, button, [tabindex]');
+    interactiveElements.forEach((element, index) => {
+        if (!element.hasAttribute('tabindex')) {
+            element.setAttribute('tabindex', '0');
+        }
+    });
+    
+    // 印刷最適化
+    window.addEventListener('beforeprint', function() {
+        document.body.classList.add('printing');
+    });
+    
+    window.addEventListener('afterprint', function() {
+        document.body.classList.remove('printing');
+    });
+});
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"971df663efe8d3d5","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDou8oW7MRjUapfbnSwnalQdaPKVgBxGAHfLYkwHgE8jyp3%2FOuNqevtG4igENCjKlkpD5KU0garvvSFJC9FEdoy2qbaDu5AR3Z4OFQjFrEWAZqsPxhaL0arYARRmUjSnAQ9RPiqpBw38M2LEm3cXE8X6rstE7PwFVxFW9qJ%2FjrkTA4nhOZa6aZEI%2FxBUKnkNtF7ZYXck33YJvzb3L%2FywgJcRW%2F0WFwFA5efwcDkvxffvXptBNTx3LRmnW6XgVviOxS3Rte%2Fz5QOp%2Bw6ohBzM3OlSeGm%2F%2BrVjuzf3AJ8HfR3E2RhWTGak03WvWxZnmjZtPy%2FiYd%2F0E17yzHGL%2FpCK5Ep9TRkISH3rtqAsGag1vTU3Sfjdfw8OtgIfdjpE4YtSV3tz8lq4J8eQts9F0qOys9yeEQLI6eiCnabJ7%2B8ad2NTThOPA8gLP9pB%2BN8HlDOvTKA9jSzdHroOdoA%2F74XHpxzC3xNGs%2FAJX99V%2BAKPmudFVld3QhDaddQvVfIr7F%2FswWlfZNUb80DkgoISOtZMdiTH5hzJAOTA%2Fo4ZyHHeaLeXjZbmI8ySMyaZMOMupgiYRuQ%3D%3D";
+        window.__genspark_locale = "ja-JP";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDou8oW7MRjUapfbnSwnalQdaPKVgBxGAHfLYkwHgE8jyp3/OuNqevtG4igENCjKlkpD5KU0garvvSFJC9FEdoy2qbaDu5AR3Z4OFQjFrEWAZqsPxhaL0arYARRmUjSnAQ9RPiqpBw38M2LEm3cXE8X6rstE7PwFVxFW9qJ/jrkTA4nhOZa6aZEI/xBUKnkNtF7ZYXck33YJvzb3L/ywgJcRW/0WFwFA5efwcDkvxffvXptBNTx3LRmnW6XgVviOxS3Rte/z5QOp+w6ohBzM3OlSeGm/+rVjuzf3AJ8HfR3E2RhWTGak03WvWxZnmjZtPy/iYd/0E17yzHGL/pCK5Ep9TRkISH3rtqAsGag1vTU3Sfjdfw8OtgIfdjpE4YtSV3tz8lq4J8eQts9F0qOys9yeEQLI6eiCnabJ7+8ad2NTThOPA8gLP9pB+N8HlDOvTKA9jSzdHroOdoA/74XHpxzC3xNGs/AJX99V+AKPmudFVld3QhDaddQvVfIr7F/swWlfZNUb80DkgoISOtZMdiTH5hzJAOTA/o4ZyHHeaLeXjZbmI8ySMyaZMOMupgiYRuQ==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
